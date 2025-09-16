@@ -3,10 +3,16 @@ import React from "react";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import MessageBubble from "../MessageBubble/MessageBubble";
 
-const mockMessages = [
-  { id: "1", role: "assistant", text: "Hello! Main aapki madad ke liye hoon. Kya karna pasand karenge aaj?" },
-  { id: "2", role: "user", text: "Mujhe ek landing page design chahiye Tailwind ke sath." },
-  { id: "3", role: "assistant", text: "Zaroor — aapko kis style (minimal / bold / corporate) chahiye?" },
+type Message = {
+  id: string;
+  role: "user" | "assistant" | "system";
+  text: string;
+};
+
+const mockMessages: Message[] = [
+  { id: "1", role: "user", text: "Hello!" },
+  { id: "2", role: "assistant", text: "Hi there!" },
+  { id: "3", role: "system", text: "Conversation started" },
 ];
 
 const IconSend = () => (
