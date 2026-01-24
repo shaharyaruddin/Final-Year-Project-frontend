@@ -1,17 +1,13 @@
 // src/app/page.tsx
 import ChatArea from "@/components/ChatArea/ChatArea";
-import RightColumn from "@/components/RightColumn/RightColumn";
-import Sidebar from "@/components/Sidebar/Sidebar";
 import React from "react";
 
-export default function ChatGPTPage() {
+export default function SimpleChatPage() {
   return (
-    <div className="min-h-screen h-screen flex bg-[#0b1220] text-gray-100">
-      <Sidebar />
-      <div className="flex-1 flex flex-col h-full">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl h-[85vh] bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 flex flex-col">
         <ChatArea />
       </div>
-      <RightColumn />
     </div>
   );
 }
