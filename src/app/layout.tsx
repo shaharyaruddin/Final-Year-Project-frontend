@@ -7,7 +7,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Final Year Project - Simple AI Chat",
+  title: "FYP - Simple AI Chat",
   description: "Custom AI assistant chatbot interface for university final year project.",
 };
 
