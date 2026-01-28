@@ -1,9 +1,9 @@
-// src/components/ChatArea/ChatArea.tsx
 "use client";
 
 import React, { useState } from "react";
 import ChatHeader from "../ChatHeader/ChatHeader";
 import MessageBubble from "../MessageBubble/MessageBubble";
+import { useSearchParams } from "next/navigation";
 import { apiService } from "@/services/api.service";
 
 type Message = {
@@ -30,17 +30,27 @@ const IconSend = () => (
 );
 
 export default function ChatArea() {
+  const searchParams = useSearchParams();
+  const companyId = searchParams.get("companyId") || "";
+
   const [messages, setMessages] = useState<Message[]>([
-    { id: "1", role: "system", text: "Conversation started" },
+    { id: "1", role: "system", text: companyId ? "Conversation started" : "Error: No companyId provided in URL. Please add ?companyId=YOUR_ID to the URL." },
   ]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Example company ID as mentioned by user
-  const companyId = "cafe_1";
-
   const handleSend = async () => {
     if (!inputText.trim() || isLoading) return;
+
+    if (!companyId) {
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        role: "system",
+        text: "Error: companyId is missing. Please add ?companyId=YOUR_ID to the URL.",
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      return;
+    }
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -62,12 +72,12 @@ export default function ChatArea() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chat Error:", error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "system",
-        text: "Error: Could not connect to the AI assistant.",
+        text: `Error: ${error.message || "Could not connect to the AI assistant."}`,
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
