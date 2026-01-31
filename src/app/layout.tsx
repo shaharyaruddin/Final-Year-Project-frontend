@@ -42,7 +42,7 @@ export default function RootLayout({
         />
 
         {/* ✅ Chatbot Widget */}
-        <Script src="/chatbot.js" strategy="afterInteractive" />
+        <Script src="http://localhost:3002/chatbot.js" strategy="afterInteractive" />
       </body>
     </html>
   );
