@@ -34,7 +34,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               window.ChatbotConfig = {
-                companyId: "696fbb2fad09e2f039554f70",
+                companyId: "69754b5d01cd080d35913643",
                 apiUrl: "http://localhost:1000/api/ask"
               };
             `,
@@ -42,7 +42,7 @@ export default function RootLayout({
         />
 
         {/* ✅ Chatbot Widget */}
-        <Script src="http://localhost:3000/chatbot.js" strategy="afterInteractive" />
+        <Script src="http://localhost:3002/chatbot.js" strategy="afterInteractive" />
       </body>
     </html>
   );
