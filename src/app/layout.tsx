@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "FYP - Simple AI Chat",
+  title: "Final Year Project",
   description:
     "Custom AI assistant chatbot interface for university final year project.",
 };
@@ -42,7 +42,7 @@ export default function RootLayout({
         />
 
         {/* ✅ Chatbot Widget */}
-        <Script src="http://localhost:3002/chatbot.js" strategy="afterInteractive" />
+        <Script src="http://localhost:3000/chatbot.js" strategy="afterInteractive" />
       </body>
     </html>
   );
