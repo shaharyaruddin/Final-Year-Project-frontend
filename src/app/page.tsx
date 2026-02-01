@@ -20,7 +20,7 @@ export default function Home() {
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-blue-200 drop-shadow-sm">
-            Real-Time Inventory <br /> Recommendation <br /> Agent
+            Real-Time Inventory <br /> Recommendation Agent
           </h1>
 
           <p className="text-lg md:text-xl text-blue-100/90 max-w-3xl leading-relaxed mb-12 font-light">
