@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Database, Brain, Globe, Shield, Zap, ShoppingCart, Server, Code, Lock } from 'lucide-react';
+import {  Database, Brain, Globe, Shield, Zap, ShoppingCart, Server, Code, Lock } from 'lucide-react';
 
 export default function Home() {
   return (
