@@ -34,7 +34,13 @@ export default function ChatArea() {
   const companyId = searchParams.get("companyId") || "";
 
   const [messages, setMessages] = useState<Message[]>([
-    { id: "1", role: "system", text: companyId ? "Conversation started" : "Error: No companyId provided in URL. Please add ?companyId=YOUR_ID to the URL." },
+    {
+      id: "1",
+      role: "system",
+      text: companyId
+        ? "Conversation started"
+        : "Error: No companyId provided in URL. Please add ?companyId=YOUR_ID to the URL.",
+    },
   ]);
   const [inputText, setInputText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +69,10 @@ export default function ChatArea() {
     setIsLoading(true);
 
     try {
-      const response = await apiService.askQuestion(companyId, userMessage.text);
+      const response = await apiService.askQuestion(
+        companyId,
+        userMessage.text,
+      );
 
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -72,12 +81,12 @@ export default function ChatArea() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Chat Error:", error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: "system",
-        text: `Error: ${error.message || "Could not connect to the AI assistant."}`,
+        text: `Error: ${error instanceof Error ? error.message : "Could not connect to the AI assistant."}`,
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
