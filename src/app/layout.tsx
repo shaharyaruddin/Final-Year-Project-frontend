@@ -34,15 +34,15 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               window.ChatbotConfig = {
-                companyId: "69754b5d01cd080d35913643",
-                apiUrl: "http://localhost:1000/api/ask"
+                companyId: "6982208251881116a8da16ca",
+                apiUrl: "https://fyp-backend-v7g4.vercel.app/api/ask"
               };
             `,
           }}
         />
 
         {/* ✅ Chatbot Widget */}
-        <Script src="http://localhost:3002/chatbot.js" strategy="afterInteractive" />
+        <Script src="http://localhost:3001/chatbot.js" strategy="afterInteractive" />
       </body>
     </html>
   );
